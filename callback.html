@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Redirecting to SPremier…</title>
-  <!-- Meta refresh: after 0 seconds, redirect to spremier://... with the same query string -->
   <meta http-equiv="refresh" content="0; url=spremier://callback" id="meta-refresh">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -17,12 +16,11 @@
     <a href="spremier://callback" id="fallback-link">Click here if you aren't redirected automatically</a>
   </p>
   <script>
-    // Append the query string to the meta refresh and the fallback link
     (function() {
       var qs = window.location.search; // includes the leading '?'
+      var meta = document.getElementById("meta-refresh");
+      var link = document.getElementById("fallback-link");
       if (qs) {
-        var meta = document.getElementById("meta-refresh");
-        var link = document.getElementById("fallback-link");
         if (meta) meta.setAttribute("content", "0; url=spremier://callback" + qs);
         if (link) link.setAttribute("href", "spremier://callback" + qs);
       }
