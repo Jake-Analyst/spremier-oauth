@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.spremier",
+    "sha256_cert_fingerprints": ["93:89:66:FD:52:BD:FF:76:E2:00:5A:C3:E8:D5:F1:1C:90:54:50:23:4F:DB:EE:E8:03:94:65:04:57:2E:0A:93"]
+  }
+}]
