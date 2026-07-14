@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPremier OAuth</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <script>
+    // Redirect from HTTPS to your custom scheme, preserving all query params
+    window.location.replace("spremier://callback" + window.location.search);
+  </script>
+</body>
+</html>
