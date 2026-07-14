@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting to SPremier…</title>
-  <meta http-equiv="refresh" content="0; url=spremier://callback" id="meta-refresh">
+  <title>SPremier OAuth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: sans-serif; text-align: center; padding: 40px; }
@@ -13,17 +12,18 @@
 <body>
   <p>Redirecting to SPremier…</p>
   <p>
-    <a href="spremier://callback" id="fallback-link">Click here if you aren't redirected automatically</a>
+    <a href="https://jake-analyst.github.io/spremier-oauth/callback" id="fallback-link">
+      Click here if you aren't redirected automatically
+    </a>
   </p>
   <script>
     (function() {
-      var qs = window.location.search; // includes the leading '?'
-      var meta = document.getElementById("meta-refresh");
+      var qs = window.location.search;
       var link = document.getElementById("fallback-link");
-      if (qs) {
-        if (meta) meta.setAttribute("content", "0; url=spremier://callback" + qs);
-        if (link) link.setAttribute("href", "spremier://callback" + qs);
-      }
+      var target = "https://jake-analyst.github.io/spremier-oauth/callback" + qs;
+      if (link) link.setAttribute("href", target);
+      // Attempt automatic redirect; App Links will intercept this
+      window.location.href = target;
     })();
   </script>
 </body>
