@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting to SPremier…</title>
+  <!-- Meta refresh: after 0 seconds, redirect to spremier://... with the same query string -->
+  <meta http-equiv="refresh" content="0; url=spremier://callback" id="meta-refresh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: sans-serif; text-align: center; padding: 40px; }
     a { color: #2452E8; font-size: 18px; }
@@ -11,19 +13,18 @@
 </head>
 <body>
   <p>Redirecting to SPremier…</p>
-  <p><a href="spremier://callback" id="fallback-link">Click here if you aren't redirected automatically</a></p>
-
+  <p>
+    <a href="spremier://callback" id="fallback-link">Click here if you aren't redirected automatically</a>
+  </p>
   <script>
+    // Append the query string to the meta refresh and the fallback link
     (function() {
-      // Build the spremier:// URL with the same query string
-      var target = "spremier://callback" + window.location.search;
-      // Try automatic redirect
-      window.location.replace(target);
-
-      // Also update the fallback link to include the query string
-      var fallback = document.getElementById("fallback-link");
-      if (fallback) {
-        fallback.setAttribute("href", target);
+      var qs = window.location.search; // includes the leading '?'
+      if (qs) {
+        var meta = document.getElementById("meta-refresh");
+        var link = document.getElementById("fallback-link");
+        if (meta) meta.setAttribute("content", "0; url=spremier://callback" + qs);
+        if (link) link.setAttribute("href", "spremier://callback" + qs);
       }
     })();
   </script>
