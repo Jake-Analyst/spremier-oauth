@@ -12,19 +12,11 @@
 <body>
   <p>Redirecting to SPremier…</p>
   <p>
-    <a href="https://jake-analyst.github.io/spremier-oauth/callback" id="fallback-link">
-      Click here if you aren't redirected automatically
-    </a>
+    <a href="spremier://callback" id="fallback-link">Click here to open SPremier</a>
   </p>
   <script>
-    (function() {
-      var qs = window.location.search;
-      var link = document.getElementById("fallback-link");
-      var target = "https://jake-analyst.github.io/spremier-oauth/callback" + qs;
-      if (link) link.setAttribute("href", target);
-      // Attempt automatic redirect; App Links will intercept this
-      window.location.href = target;
-    })();
+    // Append query string to the link
+    document.getElementById('fallback-link').href = 'spremier://callback' + window.location.search;
   </script>
 </body>
 </html>
