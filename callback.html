@@ -4,19 +4,16 @@
   <meta charset="UTF-8">
   <title>SPremier OAuth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 40px; }
-    a { color: #2452E8; font-size: 18px; }
-  </style>
 </head>
 <body>
-  <p>Redirecting to SPremier…</p>
-  <p>
-    <a href="spremier://callback" id="fallback-link">Click here to open SPremier</a>
-  </p>
+  <p>Redirecting to SPremier...</p>
+  <p><a id="fallback-link">Click here to open SPremier</a></p>
+
   <script>
-    // Append query string to the link
-    document.getElementById('fallback-link').href = 'spremier://callback' + window.location.search;
+    const target = 'spremier://callback' + window.location.search + window.location.hash;
+    const link = document.getElementById('fallback-link');
+    link.href = target;
+    window.location.href = target;
   </script>
 </body>
 </html>
