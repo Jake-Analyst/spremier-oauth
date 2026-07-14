@@ -1,14 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SPremier OAuth</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting to SPremier…</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; }
+    a { color: #2452E8; font-size: 18px; }
+  </style>
 </head>
 <body>
+  <p>Redirecting to SPremier…</p>
+  <p><a href="spremier://callback" id="fallback-link">Click here if you aren't redirected automatically</a></p>
+
   <script>
-    // Redirect from HTTPS to your custom scheme, preserving all query params
-    window.location.replace("spremier://callback" + window.location.search);
+    (function() {
+      // Build the spremier:// URL with the same query string
+      var target = "spremier://callback" + window.location.search;
+      // Try automatic redirect
+      window.location.replace(target);
+
+      // Also update the fallback link to include the query string
+      var fallback = document.getElementById("fallback-link");
+      if (fallback) {
+        fallback.setAttribute("href", target);
+      }
+    })();
   </script>
 </body>
 </html>
